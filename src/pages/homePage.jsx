@@ -18,11 +18,15 @@ export const HomePage = () => {
       }))
     }
 
+    function handleDelete(id){
+      setData(data.filter(note=>note.id!==id))
+    }
+
   return (
     <div className="note-app__body">
         <FormNote onAdd={handleAdd} />
-        <NoteList title={'Catatan Aktif'} data={data.filter(note=>!note.archived)} onAction={handleAction}/>
-        <NoteList title={'Arsip'} data={data.filter(note=>note.archived)} onAction={handleAction}/>
+        <NoteList title={'Catatan Aktif'} data={data.filter(note=>!note.archived)} onAction={handleAction} onDelete={handleDelete}/>
+        <NoteList title={'Arsip'} data={data.filter(note=>note.archived)} onAction={handleAction} onDelete={handleDelete}/>
       </div>
   )
 }
