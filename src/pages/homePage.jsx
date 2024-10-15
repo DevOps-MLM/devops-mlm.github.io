@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { FormNote, NoteList } from "../features"
+import { FormNote, Header, NoteList } from "../features"
 import { getInitialData } from "../utils"
 
 export const HomePage = () => {
@@ -23,10 +23,13 @@ export const HomePage = () => {
     }
 
   return (
-    <div className="note-app__body">
-        <FormNote onAdd={handleAdd} />
-        <NoteList title={'Catatan Aktif'} data={data.filter(note=>!note.archived)} onAction={handleAction} onDelete={handleDelete}/>
-        <NoteList title={'Arsip'} data={data.filter(note=>note.archived)} onAction={handleAction} onDelete={handleDelete}/>
-      </div>
+    <>
+      <Header />
+      <div className="note-app__body">
+          <FormNote onAdd={handleAdd} />
+          <NoteList title={'Catatan Aktif'} data={data.filter(note=>!note.archived)} onAction={handleAction} onDelete={handleDelete}/>
+          <NoteList title={'Arsip'} data={data.filter(note=>note.archived)} onAction={handleAction} onDelete={handleDelete}/>
+        </div>
+    </>
   )
 }

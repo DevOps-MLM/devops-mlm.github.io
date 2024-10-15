@@ -1,6 +1,8 @@
+/* eslint-disable react/prop-types */
 import { showFormattedDate } from "../../utils";
 
-export default function NoteItem({note,onDelete, onAction}){
+// eslint-disable-next-line react/prop-types
+export default function NoteItem({note, onDelete, onAction}){
     return (
         <div className="note-item" key={note.id}>
             <div className="note-item__content">
