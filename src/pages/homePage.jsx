@@ -6,7 +6,8 @@ export const HomePage = () => {
     const [data, setData] = useState(getInitialData())
     const [, setSearch] = useState([])
     const [, setIsSearch] = useState(false)
-
+    const [id,setId] = useState(null)
+    
     function handleAdd(note){
         setData([...data,note])
     }
@@ -34,13 +35,17 @@ export const HomePage = () => {
       setSearch(data.filter(note=>note.title.toLowerCase().includes(keyword.toLowerCase())))
   }
 
+      function handleEdit(id) {
+        setId(id)
+      }
+
   return (
     <>
       <Header onSearch={handleSearch} />
       <div className="note-app__body">
-          <FormNote onAdd={handleAdd} />
-          <NoteList title={'Catatan Aktif'} data={data.filter(note=>!note.archived)} onAction={handleAction} onDelete={handleDelete}/>
-          <NoteList title={'Arsip'} data={data.filter(note=>note.archived)} onAction={handleAction} onDelete={handleDelete}/>
+          <FormNote onAdd={handleAdd} data={data} id={id} setData={setData} setId={setId}/>
+          <NoteList title={'Catatan Aktif'} data={data.filter(note=>!note.archived)} onAction={handleAction} onDelete={handleDelete} onEdit={handleEdit}/>
+          <NoteList title={'Arsip'} data={data.filter(note=>note.archived)} onAction={handleAction} onDelete={handleDelete} onEdit={handleEdit}/>
         </div>
     </>
   )

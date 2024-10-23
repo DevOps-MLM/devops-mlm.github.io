@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import { showFormattedDate } from "../../utils";
 
-// eslint-disable-next-line react/prop-types
-export default function NoteItem({note, onDelete, onAction}){
+ 
+export default function NoteItem({note, onDelete, onAction, onEdit}){
     return (
         <div className="note-item" key={note.id}>
             <div className="note-item__content">
@@ -13,6 +13,7 @@ export default function NoteItem({note, onDelete, onAction}){
             <div className="note-item__action">
                 <button className="note-item__delete-button" onClick={() => onDelete(note.id)}>Delete</button>
                 <button className="note-item__archive-button" onClick={() => onAction(note.id)}>{note.archived ? 'Pindahkan' : 'Arsipkan'}</button>
+                <button className="note-item__archive-button" onClick={() => onEdit(note.id)}>Edit</button>
             </div>
         </div>
     )
