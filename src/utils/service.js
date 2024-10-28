@@ -1,10 +1,12 @@
 import axios from "axios";
 
 const ApiService = () => {
+    const BASE_URL = "http://localhost:3000"
+
   const get = async () => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/posts`
+        `${BASE_URL}/posts`
       );
       
       return response.data;
@@ -17,7 +19,7 @@ const ApiService = () => {
   const store = async (formData) => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/posts`,
+        `${BASE_URL}/posts`,
         formData
       );
       return response.data;
@@ -30,7 +32,7 @@ const ApiService = () => {
   const update = async (id, formData) => {
     try {
       const response = await axios.put(
-        `${import.meta.env.VITE_API_URL}/posts/${id}`,
+        `${BASE_URL}/posts/${id}`,
         formData,
         {
           headers: {
@@ -48,7 +50,7 @@ const ApiService = () => {
   const destroy = async (id) => {
     try {
       const response = await axios.delete(
-        `${import.meta.env.VITE_API_URL}/posts/${id}`,
+        `${BASE_URL}/posts/${id}`,
         {
           headers: {
             Authorization: `Bearer ${sessionStorage.getItem("token")}`,
