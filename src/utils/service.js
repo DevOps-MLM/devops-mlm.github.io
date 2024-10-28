@@ -1,12 +1,12 @@
 import axios from "axios";
 
 const ApiService = () => {
-    const BASE_URL = "http://localhost:3000"
+    const BASE_URL = import.meta.env.VITE_BASE_URL
 
   const get = async () => {
     try {
       const response = await axios.get(
-        `${BASE_URL}/posts`
+        `${BASE_URL}/notes`
       );
       
       return response;
@@ -19,7 +19,7 @@ const ApiService = () => {
   const store = async (formData) => {
     try {
       const response = await axios.post(
-        `${BASE_URL}/posts`,
+        `${BASE_URL}/notes`,
         formData
       );
       return response;
@@ -32,7 +32,7 @@ const ApiService = () => {
   const update = async (id, formData) => {
     try {
       const response = await axios.put(
-        `${BASE_URL}/posts/${id}`,
+        `${BASE_URL}/notes/${id}`,
         formData
       );
       return response;
@@ -45,7 +45,7 @@ const ApiService = () => {
   const destroy = async (id) => {
     try {
       const response = await axios.delete(
-        `${BASE_URL}/posts/${id}`
+        `${BASE_URL}/notes/${id}`
       );
       if (response.status === 401) {
         return response;
