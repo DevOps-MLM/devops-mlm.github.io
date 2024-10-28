@@ -9,8 +9,8 @@ export default function NoteList({title, data, onDelete, onAction, onEdit}){
         <>
             <h2>{title}</h2>
             {
-                // eslint-disable-next-line react/jsx-key
-                data.length ? <div className="notes-list">{data.map(note=><NoteItem note={note} onDelete={onDelete} onAction={onAction} onEdit={onEdit}/>)}</div> : <EmptyNote />
+                 
+                data.length ? <div className="notes-list">{data.map(note=><NoteItem key={note.id} note={note} onDelete={onDelete} onAction={onAction} onEdit={onEdit}/>)}</div> : <EmptyNote />
             }
         </>
     )
