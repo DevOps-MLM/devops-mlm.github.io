@@ -136,7 +136,7 @@ input::placeholder, textarea::placeholder {
   display: flex;
 }
 
-.note-item__delete-button,.note-item__archive-button {
+.note-item__delete-button,.note-item__archive-button, .note-item__edit-button {
   display: block;
   width: 100%;
   background-color: transparent;
@@ -163,6 +163,15 @@ input::placeholder, textarea::placeholder {
 
 .note-item__delete-button:hover {
   color: #b00020;
+}
+
+.note-item__edit-button {
+  border-left: 1px solid #aaa;
+  color: #608BC1;
+}
+
+.note-item__edit-button:hover {
+  color: #133E87;
 }
 
 @media only screen and (min-width: 500px) {
