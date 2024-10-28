@@ -9,7 +9,7 @@ const ApiService = () => {
         `${BASE_URL}/posts`
       );
       
-      return response.data;
+      return response;
     } catch (error) {
       console.error("Error fetching mynotes:", error);
       throw error;
@@ -22,7 +22,7 @@ const ApiService = () => {
         `${BASE_URL}/posts`,
         formData
       );
-      return response.data;
+      return response;
     } catch (error) {
       console.error("Error adding:", error);
       throw error;
@@ -33,14 +33,9 @@ const ApiService = () => {
     try {
       const response = await axios.put(
         `${BASE_URL}/posts/${id}`,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
-          },
-        },
+        formData
       );
-      return response.data;
+      return response;
     } catch (error) {
       console.error("Error updating:", error);
       throw error;
@@ -50,17 +45,12 @@ const ApiService = () => {
   const destroy = async (id) => {
     try {
       const response = await axios.delete(
-        `${BASE_URL}/posts/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
-          },
-        },
+        `${BASE_URL}/posts/${id}`
       );
       if (response.status === 401) {
         return response;
       }
-      return response.data;
+      return response;
     } catch (error) {
       console.error("Error deleting:", error);
       throw error;
