@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 // eslint-disable-next-line react/prop-types
-export const FormNote = ({onAdd, id,setId, data= [], setData}) => {
+export const FormNote = ({onAdd, id,setId, data= [], onUpdate}) => {
     const [title,setTitle] = useState('')
     const [body,setBody] = useState('')
     const [titleLength] = useState(50)
@@ -18,16 +18,10 @@ export const FormNote = ({onAdd, id,setId, data= [], setData}) => {
         setBody(dt.body)
     }
 
-    function handleSubmit(event){
+    async function handleSubmit(event){
         event.preventDefault()
         if(id) {
-            setData(data.map(note=>{
-                if(note.id == id) {
-                    return {...note, title, body}
-                } else {
-                    return note
-                }
-            }))
+            onUpdate(id, {title, body})
         } else {
             let now = new Date()
             let newNote = {
