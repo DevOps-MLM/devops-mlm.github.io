@@ -64,7 +64,7 @@ export const HomePage = () => {
 
   return (
     <>
-      <Header  />
+      <Header onSearch={handleSearch} />
       <div className="note-app__body">
           <FormNote onAdd={handleAdd} data={isSearch ? search : data} id={id} setData={setData} setId={setId} onUpdate={handleUpdate}/>
           <NoteList title={'Catatan Aktif'} data={(isSearch ? search : data).filter(note=>!note.archived)} onAction={handleAction} onDelete={handleDelete} onEdit={handleEdit}/>
