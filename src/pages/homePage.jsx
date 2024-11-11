@@ -14,12 +14,13 @@ export const HomePage = () => {
 
     async function getData() {
       const data = await ApiService().get()
-      setData(data.data)
+      console.log(data.data.data);
+      setData(data.data.data)
     }
     
     async function handleAdd(note){
       const store = await ApiService().store(note)
-      if(store.status == 200) {
+      if(store.status == 201) {
         getData()
       } else {
         alert(store.data.message)
