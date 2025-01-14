@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: notes-app
-          image: mhmmdsyahputra/notes-app:2.0
+          image: mhmmdsyahputra/notes-app:latest
 ---
 apiVersion: v1
 kind: Service
